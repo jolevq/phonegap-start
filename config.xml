@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns		= "http://www.w3.org/ns/widgets"
-	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "biz.belcorp.esikav02"
-	version 	= "0.0.2">
-
+<widget xmlns= "http://www.w3.org/ns/widgets" xmlns:gap	= "http://phonegap.com/ns/1.0"	id = "biz.belcorp.esikav02"	version = "0.0.2">
 	<name>Jolevq: Esikav02</name>
 
 	<description>
-		Primera versión de catálogo mobile
+		Primera versión de catálogo mobile Esika
 	</description>
 
 	<author href="http://www.facebook.com/JoseLuis.Elcorrobarrutia"
-		email="jolevq@gmail.com">
+		email="jelcorrobarrutia@belcorp.biz">
 		Jose Luis Elcorrobarrutia
 	</author>
 

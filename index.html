@@ -1,63 +1,114 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml>
 	<head>
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
-		<title>Training App</title>
-		<link rel="stylesheet" href="assets/css/master.css" type="text/css" media="screen" />
+		<meta name="EKInicio" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Esika Mobile - Lista</title>
 		
+		<link rel="stylesheet" href="Styles/esikastyle.css" type="text/css" media="screen" />
+		<link rel="shortcut icon" href="Images/incon.png">
+		<meta content="Usablenet Mobile 2.2" name="generator">
+		<script src="http://www.google.com/jsapi?key=ABQIAAAA1o74CLmvcPnl2Fbx4sOymBQfEs8_TczC0WHTxzaWv64C1qm3GBTO0qQp2PNQAMHfrJGKlVnfQYG27w" type="text/javascript"></script>  
+		<script src="Scripts/gears_init.js" type="text/javascript"></script>
+		<script src="Scripts/action.js" type="text/javascript"></script>
+
 		<script src="phonegap.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/lawnchair/adaptors/DOMStorageAdaptor.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/lawnchair/adaptors/WebkitSQLiteAdaptor.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/lawnchair/Lawnchair.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/dsl.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		
 	</head>
-	<body>
- 		<div id="title_bar">Phone<strong>Gap</strong> Training App</div>
-
-		<div id="welcome" class="view">
-		  <div class="app_button" id="map_button">Show My Location</div>
-  	      <div class="app_button" id="settings_button">Settings</div>
+	<body onload="javascript: openDatabase()" >
+	<!--body onload="javascript: openDatabase(); populateTable()"  -->
+	<DIV align="center" class="lmb_header">
+		<div id="un_logo"><a href="index.html"><IMG alt="Esika" src="Images/logo2.gif"</a>
 		</div>
 
-		<div id="map" class="view">
-		  <div class="map_image">
-              <img id="static_map" src="assets/img/staticmap.png">
-		  </div>
-		  <p>This is where you are</p>
-		  <div class="app_button" id="welcome_button">Go Back</div>
+		<div class="down_dotted" id="top-menu-bar">
+			<div style="width:18%;" class="top-menu-tab-1 un_left center">
+				<a class="menu-tab" href="index.htm">HOME</a>
+			</div>
+			<div style="width:18%;" class="top-menu-tab-2 un_left center">
+				<a class="menu-tab" href="index.htm">CARRITO</a>
+			</div>
+			<div style="width:23%;" class="top-menu-tab-3 un_left center">
+				<a class="menu-tab" href="login.htm">LOGIN</a>
+			</div>
+			<div style="width:39%;" class="top-menu-tab-4 un_left center">
+				<a class="menu-tab" href="index.htm">LOCALES</a>
+			</div>
+			<div class="clear">	</div>	
 		</div>
+	</DIV>
+	
+	<DIV>
+	    <p class="header">Save shopping list items</p>
+	</DIV>
+    <DIV>
+		<p class="listTitle">Items</p>
+		<input type="text" id="txtItem1" />
+		<input type="text" id="txtItem2" />
+		<input type="text" id="txtItem3" />
+		<br/>
+		<br/>
+		<input type="button" value="Add item to list" onclick="saveItems(document.getElementById('txtItem1').value,document.getElementById('txtItem2').value,document.getElementById('txtItem3').value)"/>
+	</DIV>
+	<hr class="divider" />
+	<DIV>
+		<p class="header">Current shopping list</p>
+		<form action="" method="get" enctype="application/x-www-form-urlencoded">
+		<table class="bordered" id="itemTable">			
+		</table>
+		<input type="button" value="Clear shopping list" onclick="clearTable()"/>
+		<input type="button" value="Carga Todo" onclick="Search('','itemTable',5)"/>
+		</form>
+	</DIV>	
+	<DIV class="up_dotted">
+		<DIV class="green">
+			<DIV id="product_search_title">Búsqueda de Productos</DIV>
+			<DIV id="product_search_box">
+				<FORM action="" method="GET" name="productsearch">
+				<DIV>
+				<!--INPUT class="search_products" size="17" id="productsearch_keywords" name="KEYWORDS" type="text" onclick="return productsearch_keywords_onclick()"-->
+				<INPUT class="search_products" size="17" id="productsearch_keywords" name="KEYWORDS" type="text">
+					<input type="button" value="IR" onclick="Search(document.getElementById('productsearch_keywords').value,'itemTable',5)"/>
+				<table id="pageNavPosition">
 
-		<div id="settings" class="view">
-		  <form id="settings_form">
-		    <fieldset>
-		      <legend>Map Type</legend>
-			  <input type="radio" name="map" value="roadmap" checked>Road Map<br/>
-		      <input type="radio" name="map" value="satellite">Satellite<br/>
-		      <input type="radio" name="map" value="terrain">Terrain<br/>
-		      <input type="radio" name="map" value="hybrid">Hybrid<br/>
-		    </fieldset>
-		    <fieldset>
-		      <legend>Zoom Level</legend>
-  		      <input type="radio" name="zoom" value="10">Super Far<br/>
-  		      <input type="radio" name="zoom" value="12">Far<br/>
-  		      <input type="radio" name="zoom" value="15" checked>Normal<br/>
-  		      <input type="radio" name="zoom" value="18">Close<br/>
-  		      <input type="radio" name="zoom" value="20">Super Close<br/>
-  		     </fieldset>
-		      <button id="save_button">Save</button>
-	      </form>
-		</div>
-
+				</table>
+				</DIV>
+				</FORM>
+			</DIV>
+		</DIV>
+	</DIV>
+	<DIV class="up_dotted">
+		<DIV class="order_by_phone">
+			<A class="order_by_phone un_bold" href="tel:1.800.644.4831">FONO ÉSIKA:  0-801-13030</A>
+		</DIV>
+	</DIV>
+	<DIV class="footer">
+		<DIV class="un_title_section_light">
+			<DIV class="footer-menu">
+				<A class="footer-link un_bold" href="http://m.aveda.com/mt/www.aveda.com/contactus/contactus.tmpl?un_jtt_v_w=true">Comunícate</A>
+			</DIV>
+			<DIV class="footer-menu">
+				<A class="footer-link" href="http://m.aveda.com/mt/www.aveda.com/templates/user/index.tmpl?un_jtt_v_w=true">Mi Cueta</A>
+			</DIV>
+			<DIV class="footer-menu">
+				<A class="footer-link" href="https://m.aveda.com/mt/www.aveda.com/templates/user/orders.tmpl?un_jtt_v_w=true">Estado de Pedidos</A>
+			</DIV>
+			<DIV class="footer-menu">
+				<A class="footer-link" href="http://m.aveda.com/mt/www.aveda.com/mobile/privacy.tmpl?un_jtt_v_w=true">Privacidad</A>
+			</DIV>
+			<DIV class="footer-menu">
+				<A class="footer-link" href="http://m.aveda.com/mt/www.aveda.com/customerservice/cs_terms.tmpl?un_jtt_v_w=true">Términos &amp; Condiciones</A>
+			</DIV>
+			<DIV class="footer-menu">
+				<A class="footer-link un_bold" href="http://www.aveda.com/?stop_mobi=yes">www.esika.biz</A>
+			</DIV>
+		</DIV>
+	</DIV>
 	</body>
 </html>
