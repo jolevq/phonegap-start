@@ -1,27 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns= "http://www.w3.org/ns/widgets" xmlns:gap	= "http://phonegap.com/ns/1.0"	id = "biz.belcorp.esikav02"	version = "0.0.2">
-	<name>Jolevq: Esikav02</name>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns= "http://www.w3.org/ns/widgets"
+		xmlns:gap	= "http://phonegap.com/ns/1.0"
+		id = "biz.belcorp.esikav03"
+		version = "0.0.3">
+  <name>Jolevq: Esikav02</name>
+  <description>
+    Primera versión de catálogo mobile Esika
+  </description>
 
-	<description>
-		Primera versión de catálogo mobile Esika
-	</description>
-
-	<author href="http://www.facebook.com/JoseLuis.Elcorrobarrutia"
+  <author href="http://www.facebook.com/JoseLuis.Elcorrobarrutia"
 		email="jelcorrobarrutia@belcorp.biz">
-		Jose Luis Elcorrobarrutia
-	</author>
+    Jose Luis Elcorrobarrutia
+  </author>
+  <gap:platforms>
+    <gap:platform name="android" minVersion="2.1" />
+    <gap:platform name="symbian.wrt" />
+    <gap:platform name="blackberry" project="widgets"/>
+  </gap:platforms>
 
-	<gap:platforms>
-		<gap:platform name="android" minVersion="2.1" />
-		<gap:platform name="symbian.wrt" />
-		<gap:platform name="blackberry" project="widgets"/>
-	</gap:platforms>
-
-	<icon src="icon.png" gap:role="default" />
-
-	<feature name="http://api.phonegap.com/1.0/geolocation"/>
-	<feature name="http://api.phonegap.com/1.0/network"/>
-
-	<!-- sample preference specification -->
-	<!-- <preference name="autorotate" value="false" readonly="true"/> -->
+  <icon src="Images\incon.png" />
+  <content src="index.html" />
+  <license href="" />
 </widget>
